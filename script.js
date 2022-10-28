@@ -105,3 +105,75 @@ function leapYear(year) {
 
 currentYearParag.innerText = currentYear;
 isLeapYear.innerText = leapYear(currentYearParag) ? " " : " not";
+
+//task - 7
+const JanuarySundayYears = document.getElementById("januarySunday");
+
+for (let year = 2014; year <= 2050; year++) {
+  let d = new Date(year, 0, 1);
+  if (d.getDay() === 0) {
+    const yearList = document.createElement("p");
+    yearList.innerText = "1st January is being a Sunday " + year;
+    JanuarySundayYears.appendChild(yearList);
+    // console.log(typeof yearList);
+  }
+}
+
+//task - 8
+// 1-way
+
+const inputEl = document.getElementById("guessInput");
+const guessBtnEl = document.getElementById("guessBtn");
+const resultText = document.getElementById("result");
+
+function startGuessgame() {
+  const num = Math.ceil(Math.random() * 10);
+  let userNum = +inputEl.value;
+  console.log(num);
+  console.log(userNum);
+  if (userNum <= 10 && userNum >= 1) {
+    if (num === userNum) {
+      console.log("Greate Job");
+      resultText.innerText = "Greate Job";
+    } else {
+      console.log("Not matched");
+      resultText.innerText = "Not matched";
+    }
+  } else {
+    alert("A number must be between 1 to 10 ");
+  }
+}
+
+guessBtnEl.addEventListener("click", () => startGuessgame());
+
+//task - 8
+// 2-way
+const guessBtnEl2 = document.getElementById("guessBtn2");
+// console.log(guessBtnEl2);
+
+function startGuess() {
+  const num = Math.ceil(Math.random() * 10);
+  let userNumber = prompt(
+    "Write a JavaScript program where the program takes a random integer between 1 to 10, the user is then prompted to input a guess number."
+  );
+  console.log(typeof userNumber);
+
+  if (userNumber === null) {
+    alert("Bye!");
+    return;
+  } else {
+    userNumber = +userNumber;
+  }
+
+  if (userNumber <= 10 && userNumber >= 1) {
+    if (num === userNumber) {
+      alert("Greate Job");
+    } else {
+      alert("Not matched");
+    }
+  } else {
+    prompt("A number must be between 1 to 10 ");
+  }
+}
+
+guessBtnEl2.addEventListener("click", startGuess);
